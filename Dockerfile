@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:15.5.0-alpine3.11
 
 RUN mkdir -p /usr/src/todolist
 
