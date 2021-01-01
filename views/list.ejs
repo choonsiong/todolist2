@@ -1,0 +1,27 @@
+<%- include("header") -%>
+    <!-- Ignore the if else below... it is just example of using ejs scripting feature -->
+    <% if (listTitle === "Saturay" || listTitle === "Sunday") { %>
+      <h1 class="weekend">Today is <%= listTitle %></h1>
+    <% } else { %>
+      <h1 class="weekday">Today is <%= listTitle %></h1>
+    <% } %>
+    <hr/>
+    <div class="box">
+      <h1 id="heading"><%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+      <% for (var i = 0; i < items.length; i++) { %>
+      <div class="item">
+        <input type="checkbox">
+        <p><%= items[i] %></p>
+      </div>
+      <%}%>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="todo" placeholder="New item" autocomplete="off">
+        <button type="submit" name="listButton" value="<%= listTitle %>">+</button>
+      </form>
+     </div>
+
+<%- include("footer") -%>
