@@ -16,54 +16,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-
-
-  // switch (today.getDay()) {
-  //   case 0:
-  //     message = "Sunday";
-  //     break;
-  //   case 1:
-  //     message = "Monday";
-  //     break;
-  //   case 2:
-  //     message = "Tuesday";
-  //     break;
-  //   case 3:
-  //     message = "Wednesday";
-  //     break;
-  //   case 4:
-  //     message = "Thursday";
-  //     break;
-  //   case 5:
-  //     message = "Friday";
-  //     break;
-  //   case 6:
-  //     message = "Saturday";
-  //     break;
-  //   default:
-  //     break;
-  // }
-
-  // if (today.getDay() === 6 || today.getDay() === 0) {
-    //res.write("<h1>Message</h1>");
-    //res.write("<h2>It is weekend</h1>");
-    //res.send("It is weekend");
-    //res.send();
-  //   message = 'weekend';
-  // } else {
-    //res.write("<h1>Message</h1>");
-    //res.write("<h2>Oh shit day!</h2>");
-    //res.send("Oh shit day...");
-    //res.send();
-    //res.sendFile(__dirname + "/index.html");
-  //   message = 'weekday';
-  // }
-
   const day = date.getDate();
-  // let day = date.getDay();
-
   res.render('list', {listTitle: day, items: todoItems});
-
 });
 
 app.post("/", function(req, res) {
