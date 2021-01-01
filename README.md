@@ -33,4 +33,4 @@ Server started on port 3000
 
 > Note:
 >
-> This repository is link to Docker Hub and the image is automatically built after `git push`.
+> This repository is link to Docker Hub and the image is automatically build after `git push`
