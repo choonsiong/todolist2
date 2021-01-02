@@ -1,29 +1,28 @@
 FROM node:15.5.0-alpine3.11
 
-RUN mkdir -p /usr/src/todolist
+RUN mkdir -p /app && chown -R node:node /app
 
-WORKDIR /usr/src/todolist
+WORKDIR /app
 
-COPY app.js app.js
-COPY date.js date.js
-COPY package.json package.json
+# Using node user instead of root
+USER node
 
-RUN mkdir -p /usr/src/todolist/public/css
+COPY --chown=node:node app.js date.js ./
+COPY --chown=node:node package.json ./
 
-WORKDIR /usr/src/todolist/public/css
+RUN mkdir -p /app/public/css
 
-COPY public/css/styles.css styles.css
+WORKDIR /app/public/css
 
-RUN mkdir -p /usr/src/todolist/views
+COPY --chown=node:node public/css/styles.css ./
 
-WORKDIR /usr/src/todolist/views
+RUN mkdir -p /app/views
 
-COPY views/about.ejs about.ejs
-COPY views/footer.ejs footer.ejs
-COPY views/header.ejs header.ejs
-COPY views/list.ejs list.ejs
+WORKDIR /app/views
 
-WORKDIR /usr/src/todolist
+COPY --chown=node:node views/*.ejs ./
+
+WORKDIR /app
 
 RUN npm install
 
